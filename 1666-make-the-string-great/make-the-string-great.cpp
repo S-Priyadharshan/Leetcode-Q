@@ -10,11 +10,20 @@ public:
                 st.push(ch);
             }
         }
+        // Reverse Method
+        // while(!st.empty()){
+        //     ans+=st.top();
+        //     st.pop();
+        // }
+        // reverse(ans.begin(),ans.end());
+        // return ans;
+
+        //Alternate to Reverse
+
         while(!st.empty()){
-            ans+=st.top();
+            ans=st.top()+ans;
             st.pop();
         }
-        reverse(ans.begin(),ans.end());
         return ans;
     }
 };
