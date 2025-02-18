@@ -1,6 +1,9 @@
 class Solution {
 public:
     int divide(int dividend, int divisor) {
+        // Use of labs for absolute of long long integers
+        // Use of short count as a substitute for int count
+        // d<<(count+1) operators associativity
         bool sign = true;
         if(dividend==divisor)return 1;
         if(dividend>=0&&divisor<0)sign=false;
@@ -9,7 +12,7 @@ public:
         long n=labs(dividend);
         long d=labs(divisor);
         while(n>=d){
-            int count=0;
+            short count=0;
             while(n>(d<<(count+1))){
                 count++;
             }
