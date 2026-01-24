@@ -8,7 +8,7 @@ public:
         for(int i=0;i<n;i++){
             sm+=nums[i];
             while(sm>=target && j<=i){
-                if(sm>=target)ans=min(ans,i-j+1);
+                ans=min(ans,i-j+1);
                 sm-=nums[j];
                 j++;
             }
