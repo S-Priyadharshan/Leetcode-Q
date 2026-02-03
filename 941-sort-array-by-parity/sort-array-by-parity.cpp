@@ -6,7 +6,6 @@ public:
      while(l<n && r<n){
         while(l<n && nums[l]%2==0)l++;
         while(r<n && (r<=l || nums[r]%2!=0))r++;
-        cout<<l<<" "<<r<<"\n";
         if(l<n && r<n)swap(nums[l],nums[r]);
         r++;
      }
