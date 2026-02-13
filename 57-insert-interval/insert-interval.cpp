@@ -2,10 +2,6 @@ class Solution {
 public:
     vector<vector<int>> insert(vector<vector<int>>& intervals, vector<int>& newInterval) {
         vector<vector<int>> ans;
-        // if(intervals.empty()){
-        //     ans.push_back(newInterval);
-        //     return ans;
-        // }
         vector<int>i=newInterval;
         vector<vector<int>> res;
         for(auto v:intervals){
