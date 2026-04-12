@@ -36,10 +36,10 @@ class Solution {
                 TreeNode node=p.node;
                 index=p.index;
                 if(node.left!=null){
-                    q.offer(new Pair(node.left,2*index));
+                    q.offer(new Pair(node.left,2*index+1));
                 }
                 if(node.right!=null){
-                    q.offer(new Pair(node.right,2*index+1));
+                    q.offer(new Pair(node.right,2*index+2));
                 }
             }
             maxwidth=Math.max(maxwidth,index-start+1);
