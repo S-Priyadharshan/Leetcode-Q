@@ -22,7 +22,7 @@ public:
         for(int i=0;i<4;i++){
             int nx=x+dirs[i];
             int ny=y+dirs[i+1];
-            if(nx>=0 && nx<grid.size() && ny>=0 && ny<grid[0].size() && grid[x][y]=='1' && 
+            if(nx>=0 && nx<grid.size() && ny>=0 && ny<grid[0].size() && grid[nx][ny]=='1' && 
             !vis[nx][ny]){
                 dfs(nx,ny,vis,grid);
             }
