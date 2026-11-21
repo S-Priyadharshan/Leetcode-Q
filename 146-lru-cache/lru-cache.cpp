@@ -15,6 +15,15 @@ public:
         tail->prev=head;
     }
 
+    ~LRUCache(){
+        Node* curr=head;
+        while(curr!=nullptr){
+            Node* next=curr->next;
+            delete curr;
+            curr=next;
+        }
+    }
+
     void addNode(Node* newNode){
         Node* next=head->next;
         newNode->prev=head;
@@ -23,19 +32,17 @@ public:
         next->prev=newNode;
     }
 
-    void deleteNode(Node* node){
+    void removeNode(Node* node){
         node->prev->next=node->next;
         node->next->prev=node->prev;
     }
     
     int get(int key) {
         if(cache.find(key)!=cache.end()){
-            Node* res = cache[key];
+            Node* res=cache[key];
             int val=res->val;
-            cache.erase(key);
-            deleteNode(res);
+            removeNode(res);
             addNode(res);
-            cache[key]=head->next;
             return val;
         }
         return -1;
@@ -43,16 +50,22 @@ public:
     
     void put(int key, int value) {
         if(cache.find(key)!=cache.end()){
-            Node* node = cache[key];
-            cache.erase(key);
-            deleteNode(node);
+            Node* res=cache[key];
+            res->val=value;
+            removeNode(res);
+            addNode(res);
+            return;
         }
         if(cache.size()==cap){
-            cache.erase(tail->prev->key);
-            deleteNode(tail->prev);
+            Node* lru=tail->prev;
+            cache.erase(lru->key);
+            removeNode(lru);
+            delete lru;
         }
-        addNode(new Node(key,value));
-        cache[key]=head->next;
+
+        Node* newNode = new Node(key,value);
+        addNode(newNode);
+        cache[key]=newNode;
     }
 };
 
